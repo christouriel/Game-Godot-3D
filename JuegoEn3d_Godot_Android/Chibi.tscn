@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4m3akfrhro2s"]
+
+[ext_resource type="Script" path="res://Chibi.gd" id="1_3tiih"]
+[ext_resource type="ArrayMesh" uid="uid://7knuxkng5e8g" path="res://Assets/Models/AnimeChibiModelBase.obj" id="2_wdh0o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq6je"]
+albedo_color = Color(0.580392, 0.898039, 0.164706, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w31if"]
+size = Vector3(0.29425, 0.470291, 0.221069)
+
+[node name="Chibi" type="CharacterBody3D"]
+transform = Transform3D(2.23955, 0, 0, 0, 2.23955, 0, 0, 0, 2.23955, 0, 0, 0)
+script = ExtResource("1_3tiih")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.188399, -0.00165873, -0.00220097, -0.00166935, 0.178475, -0.00701369, 0.00223059, -0.00652965, -0.191146, 0, -0.30763, -0.000740953)
+material_override = SubResource("StandardMaterial3D_xq6je")
+mesh = ExtResource("2_wdh0o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.33904, 0, 0, 0, 2.33904, 0, 0, 0, 2.33904, 0.00436401, 0.275862, -0.0173068)
+shape = SubResource("BoxShape3D_w31if")
+
+[node name="Camera_Controller" type="Node3D" parent="."]
+top_level = true
+
+[node name="Camera_Target" type="Node3D" parent="Camera_Controller"]
+transform = Transform3D(1, 0, 0, 0, 0.940401, 1.0202, 0, -0.340067, 2.8212, 0, 3.97923, 7.86398)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target"]
+transform = Transform3D(0.944945, 0.0876529, -0.31527, -0.13306, 0.983133, -0.12548, 0.0996512, 0.0535073, 0.313557, -3.40264, -0.143875, -0.507386)
+current = true
